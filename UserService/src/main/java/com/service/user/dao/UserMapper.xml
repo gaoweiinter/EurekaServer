@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.service.user.dao.UserMapper">
+
+	<resultMap id="BaseResultMap"
+		type="com.service.user.bean.User">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="username" property="username"
+			jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="age" property="age" jdbcType="INTEGER" />
+		<result column="balance" property="balance"
+			jdbcType="DECIMAL" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id,username,name,age,balance
+	</sql>
+
+	<!-- find User -->
+	<select id="findOne" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<select id="findAll" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from user
+		order by id asc
+	</select>
+
+	<!-- delete User -->
+	<delete id="deleteById" parameterType="java.lang.Long">
+		delete from
+		user
+		where id =
+		#{id,jdbcType=INTEGER}
+	</delete>
+
+	<!-- insert User -->
+	<insert id="insert" parameterType="com.service.user.bean.User">
+		insert into user (id,
+		username, name,
+		age, balance)
+		values
+		(#{id,jdbcType=INTEGER},
+		#{username,jdbcType=VARCHAR},
+		#{name,jdbcType=VARCHAR},
+		#{age,jdbcType=INTEGER},
+		#{balance,jdbcType=DECIMAL}
+		)
+	</insert>
+
+	<update id="updateById" parameterType="java.lang.Long">
+		update user
+		set username =
+		#{username,jdbcType=VARCHAR},
+		name =
+		#{name,jdbcType=VARCHAR},
+		age =
+		#{age,jdbcType=INTEGER},
+		balance =
+		#{balance,jdbcType=DECIMAL}
+		where
+		id = #{id,jdbcType=INTEGER}
+	</update>
+
+</mapper>

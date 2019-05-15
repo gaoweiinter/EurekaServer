@@ -1,0 +1,43 @@
+server:
+  port: 8000
+  servlet:
+    session:
+      timeout: 10
+  tomcat:
+    uri-encoding: UTF-8
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/springclouddemo?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2B8
+    username: gaowei
+    password: 1qazXSW@
+  application:
+    name: User   
+
+mybatis:
+  mapperLocations: classpath:mappers/*.xml
+  typeAliasesPackage: com.lgp.SpringBoot.bean
+  
+management:
+  security:
+    enabled: false
+    
+info:
+  app:
+    name: "@project.artifactId@"
+    encoding: "@project.build.sourceEncoding@"
+    java:
+      source: "@java.version@"
+      target: "@java.version@"
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://user:pwd123@eureka-primary:8771/eureka/ 
+  #禁用自我保护模式
+  #server:
+  #  enable-self-preservation: false    
+  instance:
+    hostname: user-service
+    metadata-map:
+      # 自定义元数据
+      my-metadata: User自定义元数据
+        
