@@ -1,0 +1,33 @@
+server:
+  port: 8020
+#  servlet:
+#    session:
+#      timeout: 10
+#  tomcat:
+#    uri-encoding: UTF-8
+    
+#logging:
+#  level:
+#    root: INFO
+
+spring:
+  application:
+    name: Movie  
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://user:pwd123@eureka-primary:8771/eureka/ 
+  #instance:
+    #hostname: movie-service#不要配置Host，否则转译成真正的URL，需要在主机Hosts文件添加配置
+    #metadata-map:
+    #  # 自定义元数据
+    #  my-metadata: Movie自定义元数据
+    
+serviceUrl: http://User/
+
+#没有这个找不到Application Name在Eureka Server注册对应的虚拟URL
+ribbon:
+  eureka: 
+    enable: true
+  
