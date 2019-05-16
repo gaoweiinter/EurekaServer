@@ -29,16 +29,16 @@ public class MovieController {
 
 	@Autowired
 	private LoadBalancerClient loadBalancerClient;
-
-	@GetMapping("/{id}")
+	
+	@GetMapping("/user/{id}")
 	public User findById(@PathVariable Long id) {
 		System.out.println("URL: " + serviceUrl);
-		return restTemplate.getForObject(this.serviceUrl + "user/" + id, User.class);
+		return restTemplate.getForObject(this.serviceUrl + id, User.class);
 	}
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public List<User> findAll() {
-		return restTemplate.getForObject(serviceUrl + "users", List.class);
+		return restTemplate.getForObject(serviceUrl, List.class);
 	}
 
 	@GetMapping("/user-instance")

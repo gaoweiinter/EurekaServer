@@ -11,7 +11,7 @@ spring:
     username: gaowei
     password: 1qazXSW@
   application:
-    name: User   
+    name: User
 
 mybatis:
   mapperLocations: classpath:mappers/*.xml
@@ -36,8 +36,12 @@ eureka:
   #server:
   #  enable-self-preservation: false    
   instance:
-    hostname: user-service
+    #hostname: user-service
     metadata-map:
       # 自定义元数据
       my-metadata: User自定义元数据
+      
+#ribbon:
+#  eureka: 
+#    enable: true      
         

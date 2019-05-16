@@ -19,7 +19,7 @@ eureka:
     serviceUrl:
       defaultZone: http://user:pwd123@eureka-primary:8771/eureka/ 
   instance:
-    hostname: movie-service
+    #hostname: movie-service
     metadata-map:
       # 自定义元数据
       my-metadata: Movie自定义元数据
